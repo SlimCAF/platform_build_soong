@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"slimcaf/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -124,6 +126,8 @@ type variableProperties struct {
 		Device_support_hwfde_perf struct {
 			Cflags []string
 		}
+		// include SlimCAF variables
+		Slimcaf android.Product_variables
 	} `android:"arch_variant"`
 }
 
@@ -242,6 +246,9 @@ type productVariables struct {
 	PgoAdditionalProfileDirs []string `json:",omitempty"`
 
 	VendorVars map[string]map[string]string `json:",omitempty"`
+
+	// include SlimCAF variables
+	Slimcaf android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
